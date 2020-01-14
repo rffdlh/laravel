@@ -20,11 +20,33 @@ Route::get('/', function () {
     return Buku::all();
 });
 
+Route::get('contoh', 'ContohController@latihan1');
+
+Route::get('profil1', 'ContohController@latihan2');
+
+Route::get('profil2', 'ContohController@latihan3');
+
+Route::get('profil3', 'ContohController@latihan4');
+
+Route::get('biodata', 'ContohController@biodata');
+
+//menggunakan optional
+Route::get('pesan/{makan?}/{minum?}/{harga?}', 'ContohController@pesanan');
+
+//CRUD buku
+Route::get('get-buku', 'BukuController@index');
+Route::get('create-buku', 'BukuController@buatdata');
+Route::get('get-buku/{id}', 'BukuController@show');
+Route::get('delete-buku/{id}', 'BukuController@delete');
+Route::get('update-buku/{id}', 'BukuController@update');
+
+Route::get('hitung-buku', 'BukuController@hitungbuku');
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('pesan', function () {
+Route::get('psn', function () {
     return 'ini pesan dari saya';
 });
 
@@ -57,6 +79,7 @@ Route::get('angkot/jurusan', function () {
     return $data .''. $jurusan1 ."<br>". $data .''. $jurusan2 ."<br>". $data .''. $jurusan3;
 });
 
+//optional parameter
 Route::get('user/{nama}/{alamat}/{nomor}', function ($nama, $alamat, $nomor) {
     return 'halo ' .$nama. ' yang beralamat di ' .$alamat. ' nomor ' .$nomor;
 });
