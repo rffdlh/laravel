@@ -21,13 +21,9 @@ Route::get('/', function () {
 });
 
 Route::get('contoh', 'ContohController@latihan1');
-
 Route::get('profil1', 'ContohController@latihan2');
-
 Route::get('profil2', 'ContohController@latihan3');
-
 Route::get('profil3', 'ContohController@latihan4');
-
 Route::get('biodata', 'ContohController@biodata');
 
 //menggunakan optional
@@ -38,9 +34,30 @@ Route::get('get-buku', 'BukuController@index');
 Route::get('create-buku', 'BukuController@buatdata');
 Route::get('get-buku/{id}', 'BukuController@show');
 Route::get('delete-buku/{id}', 'BukuController@delete');
-Route::get('update-buku/{id}', 'BukuController@update');
+Route::get('update-buku/{id}/{judul}', 'BukuController@update');
 
 Route::get('hitung-buku', 'BukuController@hitungbuku');
+
+//CRUD siswa
+Route::get('get-siswa', 'SiswaController@index');
+Route::get('create-siswa', 'SiswaController@buatdata');
+Route::get('get-siswa/{id}', 'SiswaController@show');
+Route::get('delete-siswa/{id}', 'SiswaController@delete');
+Route::get('update-siswa/{id}/{nama}/{nis}/{tgl_lahir}', 'SiswaController@update');
+
+//Passing data
+Route::get('pass', 'PracticeController@pass');
+Route::get('pass1', 'PracticeController@pass1');
+Route::get('status/{a?}', 'PracticeController@status');
+Route::get('buku', 'PracticeController@loop');
+
+//Book
+Route::get('book', 'BukuController@index');
+Route::get('book/{id}', 'BukuController@show');
+
+//Gaji
+Route::get('gajih', 'GajiController@indexgaji');
+Route::get('gajih/{id}', 'GajiController@showgaji');
 
 // Route::get('/', function () {
 //     return view('welcome');
