@@ -20,7 +20,7 @@ class GajiSeeder extends Seeder
         $gaji->jenis_kelamin = 'Perempuan';
         $gaji->alamat = "Kp.Pasawahan";
         $gaji->jabatan = 'Manager';
-        $gaji->jam_kerja = 9;
+        $gaji->jam_kerja = 200;
         $gaji->save();
 
         $gaji = new Gaji;
@@ -30,7 +30,7 @@ class GajiSeeder extends Seeder
         $gaji->jenis_kelamin = 'Laki-Laki';
         $gaji->alamat = "Kp.Pasawahan";
         $gaji->jabatan = 'Staff';
-        $gaji->jam_kerja = 7;
+        $gaji->jam_kerja = 150;
         $gaji->save();
     }
 }

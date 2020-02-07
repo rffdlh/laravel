@@ -16,6 +16,50 @@ use App\Pembeli;
 use App\Penjual;
 use App\peminjam;
 use App\Pembuat;
+use App\Gaji;
+use App\Mahasiswa;
+use App\Dosen;
+use App\Hobi;
+
+Route::get('relasi-1', function() {
+    # Temukan mahasiswa dengan nim 21022003
+    $mahasiswa = Mahasiswa::where('nim', '=', '21022003')->first();
+    # Tampilkan nama wali mahasiswa
+    return $mahasiswa->wali->nama;
+});
+Route::get('relasi-2', function() {
+    # Mencari data mahasiswa dengan nim 21022003
+    $mahasiswa = Mahasiswa::where('nim', '=', '21022003')->first();
+    # Menampilkan nama dosen pembimbing
+    return $mahasiswa->dosen->nama;
+});
+Route::get('relasi-3', function() {
+    # Mencari data dosen yang bernama Adnan
+    $dosen = Dosen::where('nim', '=', 'Abdul Mustofa')->first();
+    # Tampilkan seluruh data mahasiswa didiknya
+    foreach ($dosen->mahasiswa as $temp) {
+        echo '<li> Nama : ' . $temp->nama .
+        '<strong> ' . $temp->nim . '</strong></li>';
+    }
+});
+Route::get('relasi-4', function() {
+    # Mencari data mahasiswa yang bernama Rofi
+    $rofi = Mahasiswa::where('nama', '=', 'Rofi')->first();
+    # Menampilkan seluruh hobi si Rofi
+    foreach ($rofi->hobi as $temp) {
+        echo '<li>' . $temp->hobi . '</li>';
+    }
+});
+Route::get('relasi-5', function() {
+    # Mancari data hobi yang bernama Mandi Hujan
+    $mandi_hujan = Hobi::where('hobi', '=', 'Mandi Hujan')->first();
+    # Menampilkan semua mahasiswa yang punya hobi mandi hujan
+    foreach ($mandi_hujan->mahasiswa as $temp) {
+        echo '<li> Nama : ' . $temp->nama .
+        '<strong> ' . $temp->nim . '</strong></li>';
+    }
+});
+
 Route::get('/', function () {
     return Buku::all();
 });
@@ -58,6 +102,17 @@ Route::get('book/{id}', 'BukuController@show');
 //Gaji
 Route::get('gajih', 'GajiController@indexgaji');
 Route::get('gajih/{id}', 'GajiController@showgaji');
+
+//Belajar Blade Templating
+Route::get('/profil', function() { //nama url
+    return view('profil'); //nama view
+});
+Route::get('/kontak', function() {
+    return view('kontak');
+});
+Route::get('/blog', function() {
+    return view('blog');
+});
 
 // Route::get('/', function () {
 //     return view('welcome');
