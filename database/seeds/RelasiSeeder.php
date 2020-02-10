@@ -43,7 +43,7 @@ class RelasiSeeder extends Seeder
         ));
 
         $hlm = Mahasiswa::create(array(
-            'nama' => 'Hlm',
+            'nama' => 'Hilman',
             'nim' => '17062002',
             'id_dosen' => $dosen->id
         ));
@@ -51,19 +51,19 @@ class RelasiSeeder extends Seeder
 
         # Membuat wali si Rofi
         Wali::create(array(
-            'nama' => 'Abdi',
+            'nama' => 'Rofi Fadilah',
             'id_mahasiswa' => $rofi->id
         ));
 
         # Membuat wali si Adnan
         Wali::create(array(
-            'nama' => 'Adi',
+            'nama' => 'Adnan Maulana',
             'id_mahasiswa' => $adnan->id
         ));
 
         # Membuat wali si Hlm
         Wali::create(array(
-            'nama' => 'Kamu',
+            'nama' => 'Hilman Permana',
             'id_mahasiswa' => $hlm->id
         ));
 
@@ -83,5 +83,8 @@ class RelasiSeeder extends Seeder
         $adnan->hobi()->attach($mandi_hujan->id);
         $hlm->hobi()->attach($baca_buku->id);
         $this->command->info('Data Mahasiswa dan Hobi telah diisi');
+
+        // attach -> menampilkan banyak data
+        // sync -> untuk mengupdate data
     }
 }

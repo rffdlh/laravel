@@ -17,7 +17,8 @@ class BuatTabelWali extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->unsignedBigInteger('id_mahasiswa');
-	        $table->foreign('id_mahasiswa')->references('id')->on('mahasiswas')->onDelete('CASCADE');
+            $table->foreign('id_mahasiswa')->references('id')
+                ->on('mahasiswas')->onDelete('CASCADE');
             $table->timestamps();
         });
     }

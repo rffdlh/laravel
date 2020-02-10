@@ -26,6 +26,7 @@ Route::get('relasi-1', function() {
     $mahasiswa = Mahasiswa::where('nim', '=', '21022003')->first();
     # Tampilkan nama wali mahasiswa
     return $mahasiswa->wali->nama;
+    // first() -> 1 data yang diambil => get() -> banyak data yang diambil
 });
 Route::get('relasi-2', function() {
     # Mencari data mahasiswa dengan nim 21022003
@@ -35,7 +36,7 @@ Route::get('relasi-2', function() {
 });
 Route::get('relasi-3', function() {
     # Mencari data dosen yang bernama Adnan
-    $dosen = Dosen::where('nim', '=', 'Abdul Mustofa')->first();
+    $dosen = Dosen::where('nama', '=', 'Abdul Mustofa')->first();
     # Tampilkan seluruh data mahasiswa didiknya
     foreach ($dosen->mahasiswa as $temp) {
         echo '<li> Nama : ' . $temp->nama .
@@ -58,6 +59,10 @@ Route::get('relasi-5', function() {
         echo '<li> Nama : ' . $temp->nama .
         '<strong> ' . $temp->nim . '</strong></li>';
     }
+});
+Route::get('eloquent', function () {
+    $data = Mahasiswa::with('wali', 'dosen', 'hobi')->get();
+    return view('eloquent', compact('data'));
 });
 
 Route::get('/', function () {

@@ -15,13 +15,13 @@ class Mahasiswa extends Model
         return $this->hasOne('App\Wali', 'id_mahasiswa');
     }
     public function dosen() {
-        return $this->belongsTo('App\Dosen', 'id_dosen');
+        return $this->belongsTo('App\Dosen', 'id_dosen'); // dimiliki oleh dosen
     }
     public function hobi() {
         return $this->belongsToMany(
-        'App\Hobi',
-        'mahasiswa_hobi',
-        'id_mahasiswa',
-        'id_hobi');
+            'App\Hobi', // model hobi
+            'mahasiswa_hobi', // table mahasiswa hobi
+            'id_mahasiswa', // fk table untuk mahasiswa
+        'id_hobi'); // fk table untuk hobi
     }
 }
